@@ -96,6 +96,8 @@ class RFM69 {
     }
 
     bool initialize(uint8_t freqBand, uint8_t ID, uint8_t networkID=1);
+    /** Isca adaptation */
+    bool initialize( uint16_t preamble, uint32_t frequency, uint32_t baudrate, int8_t power, char * id, uint8_t id_size );
     void setAddress(uint8_t addr);
     void setNetwork(uint8_t networkID);
     bool canSend();
@@ -113,6 +115,7 @@ class RFM69 {
     void promiscuous(bool onOff=true);
     virtual void setHighPower(bool onOFF=true); // has to be called after initialize() for RFM69HW
     virtual void setPowerLevel(uint8_t level); // reduce/increase transmit power level
+    virtual void setPowerLevelAdjusted( int8_t powerLevel );
     void sleep();
     uint8_t readTemperature(uint8_t calFactor=0); // get CMOS temperature (8bit)
     void rcCalibration(); // calibrate the internal RC oscillator for use in wide temperature variations - see datasheet section [4.3.5. RC Timer Accuracy]
