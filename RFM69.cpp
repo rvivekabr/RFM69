@@ -113,7 +113,7 @@ bool RFM69::initialize(uint8_t freqBand, uint8_t nodeID, uint8_t networkID)
   return true;
 }
 
-bool RFM69::initialize( uint16_t preamble, uint32_t frequency, uint32_t baudrate, int8_t power, char * id, uint8_t id_size )
+bool RFM69::initialize( uint16_t preamble, uint32_t frequency, uint32_t baudrate, int8_t power, uint8_t nodeID )
 {
 	uint8_t CONFIG[][2] =
 	{
@@ -213,8 +213,8 @@ bool RFM69::initialize( uint16_t preamble, uint32_t frequency, uint32_t baudrate
 		return false;
 	_inISR = false;
 	attachInterrupt(_interruptNum, RFM69::isr0, RISING);
-
 	selfPointer = this;
+	_address = nodeID;
 	return true;
 }
 

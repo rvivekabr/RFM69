@@ -97,7 +97,7 @@ class RFM69 {
 
     bool initialize(uint8_t freqBand, uint8_t ID, uint8_t networkID=1);
     /** Isca adaptation */
-    bool initialize( uint16_t preamble, uint32_t frequency, uint32_t baudrate, int8_t power, char * id, uint8_t id_size );
+    bool initialize( uint16_t preamble, uint32_t frequency, uint32_t baudrate, int8_t power, uint8_t nodeID );
     void setAddress(uint8_t addr);
     void setNetwork(uint8_t networkID);
     bool canSend();
