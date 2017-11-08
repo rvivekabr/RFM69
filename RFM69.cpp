@@ -204,7 +204,7 @@ bool RFM69::initialize( uint16_t preamble, uint32_t frequency, uint32_t baudrate
 	encrypt(0);
 
 	setHighPower(_isRFM69HW); // called regardless if it's a RFM69W or RFM69HW
-	setPowerLevel( power );
+	setPowerLevelAdjusted( power );
 	setMode(RF69_MODE_STANDBY);
 	start = millis();
 	while ( ((readReg(REG_IRQFLAGS1) & RF_IRQFLAGS1_MODEREADY) == 0x00) && millis() - start < timeout )
